@@ -56,11 +56,54 @@ public class EvenTimesOddTimes {
         System.out.println(onlyOne + " " + (eor ^ onlyOne));
     }
 
+    /**
+     * 一个数组中有一个数出现K次，其他数都出现了M次， M > 1, K < m,求出现了K次
+     * 的数，要求 空间 O(1), 时间 O(N)
+     *
+     * @param arr
+     * @param k
+     * @param m
+     * @return
+     */
+    public static int onlyKTimes(int[] arr, int k, int m) {
+        int[] t = new int[32];
+        for (int num : arr) {
+            for (int i = 0; i < 32; i++) {
+                t[i] += (num >> i) & 1;
+            }
+        }
+        int ans = 0;
+        for (int i = 0; i < 32; i++) {
+            if (t[i] % m == 0) {
+                continue;
+            }
+            if (t[i] % m == k) {
+                ans |= (1 << i);
+            } else {
+                return -1;
+            }
+        }
+        if (ans == 0) {
+            int count = 0;
+            for (int num : arr) {
+                if (num == ans) {
+                    count++;
+                }
+            }
+            if (count != k) {
+                return -1;
+            }
+        }
+        return ans;
+
+    }
+
     public static void main(String[] args) {
-        int[] arr1 = {1,1,2,2,3,3,4};
-        int[] arr2 = {1,1,2,2,3,3,4,5,66,66,7,7};
+        int[] arr1 = {1, 1, 2, 2, 3, 3, 4};
+        int[] arr2 = {1, 1, 2, 2, 3, 3, 4, 5, 66, 66, 7, 7};
         printOddTimesNum1(arr1);
         printOddTimesNum2(arr2);
+        System.out.println(onlyKTimes(arr1, 1, 2));
     }
 }
 

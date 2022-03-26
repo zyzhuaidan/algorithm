@@ -51,6 +51,7 @@ public class Code04_TopologicalOrderDFS01 {
         }
 //        排序？
         records.sort(new MyComparator());
+        records.sort(new MyComparator());
         ArrayList<DirectedGraphNode> directedGraphNodes = new ArrayList<>();
         for (Record r : records) {
             directedGraphNodes.add(r.node);

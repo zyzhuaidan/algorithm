@@ -21,7 +21,7 @@ interface Subject {
     void deleteObserver(Observer obj);
 
     /**
-     * 移除观察者
+     * 通知观察者
      */
     void notifyObserver();
 }

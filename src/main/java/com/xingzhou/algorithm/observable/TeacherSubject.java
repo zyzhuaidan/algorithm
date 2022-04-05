@@ -1,4 +1,4 @@
-package com.xingzhou.algorithm.Observable;
+package com.xingzhou.algorithm.observable;
 
 import java.util.ArrayList;
 import java.util.List;

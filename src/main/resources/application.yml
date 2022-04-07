@@ -1,8 +1,14 @@
-
 server:
-  port: 8080
+  port: 8081
 
 #注册中心
 spring:
   application:
     name: algorithm
+  server:
+    port: 8081
+  ###rocketmq###
+rocketmq:
+  name-server: 127.0.0.1:9876
+  producer:
+    timeout: 10000
